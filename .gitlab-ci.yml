@@ -23,10 +23,11 @@ before_script:
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-  - pip install -r requirements.txt
+  - python -m pip install -r requirements.txt
 
 
 run:
   script:
+    - python -m pip install -r requirements.txt
     - python debug.py 00
     - python debug.py 40 03 03 66 6f 6f 1e 0b 48 65 6c 6c 6f 20 57 6f 72 6c 64 03 62 61 72 11 0a 03 62 61 7a 10 01
