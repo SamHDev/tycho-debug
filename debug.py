@@ -123,7 +123,7 @@ def print_element(indent, element, prefix=True):
     elif isinstance(element, tycho.elements.Map):
         if prefix:
             print_byte(indent, 0x60 + element.key_type(1).encode_prefix(), "Map::" + element.key_type.__name__)
-
+        print_byte(indent + 1, tycho.length.encode_length(len(element.value)), f"Map has length {len(element.value)}")
         i = 0
         for key, value in element.value.items():
             i += 1
@@ -134,7 +134,7 @@ def print_element(indent, element, prefix=True):
     elif isinstance(element, tycho.elements.List):
         if prefix:
             print_byte(indent, 0x70 + element.item_type(1).encode_prefix(), "List::" + element.item_type.__name__)
-
+        print_byte(indent + 1, tycho.length.encode_length(len(element.value)), f"List has length {len(element.value)}")
         i = 0
         for item in element.value:
             i += 1
